@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>les robots</title>
+    <title>{{site.title}}</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
@@ -49,16 +49,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-right">
-		
-		    
+		{% assign pages = site.pages | sort:"weight"  %}
+		    {% for p in pages %}
 		      <li>
-			  <a href="/contact.html">contact</a>
+			  <a href="{{ p.url }}">{{ p.title }}</a>
 			</li>
-		    
-		      <li>
-			  <a href="/index.html">Accueil</a>
-			</li>
-		    
+		    {% endfor %}
 		</ul>
 				    
 	</div>
@@ -73,7 +69,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    <small> par <a href="#">Start Bootstrap</a>
+                    <small>{{ post.title }} par <a href="#">Start Bootstrap</a>
                     </small>
                 </h1>
                 <ol class="breadcrumb">
@@ -106,10 +102,7 @@
                 <hr>
 
                 <!-- Post Content -->
-                <article>rigides, son abdomen sur le haut duquel la couverture, prête à glisser tout à fait, ne tenait plus qu’à peine. Ses nombreuses pattes, lamentablement grêles par comparaison avec la corpulence qu’il avait par ailleurs, grouillaient désespérément sous ses yeux.« Qu’est-ce qui m’est arrivé ? » pensa-t-il. Ce n’était pas un rêve. Sa chambre, une vraie chambre humaine, juste un peu trop petite, était là tranquille entre les quatre murs qu’il connaissait bien. </article>
-
-… which is shown in the screenshot below:
-![My helpful screenshot](/assets/screenshot.jpg)
+                {{ content }}
                 <hr>
 
                 <!-- Blog Comments -->
@@ -248,13 +241,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
- <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; sébastien auré - sebastien.aure@gmail.com</p>
-                </div>
-            </div>
- </footer>
+{% include footer.html %}
 
 </body>
 
